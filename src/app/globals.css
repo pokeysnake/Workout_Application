@@ -1,0 +1,137 @@
+/* src/app/globals.css — Tailwind v4, Apple Glass + Enhanced Legibility */
+@import "tailwindcss";
+
+/* Enable `dark:` utilities (class-based dark mode) */
+@custom-variant dark (&:is(.dark *));
+
+.dark {
+  --background: oklch(0.12 0 0);
+  --foreground: oklch(0.99 0 0);
+  --primary: oklch(0.72 0.15 250);
+  --primary-foreground: oklch(0.18 0 0);
+  --border: oklch(1 0 0 / 15%);
+  --ring: oklch(0.6 0 0);
+
+  /* Enhanced dark mode canvas gradients */
+  --canvas-a: oklch(0.25 0.04 260 / 0.6);
+  --canvas-b: oklch(0.2 0.04 300 / 0.6);
+
+  /* CHART STUFF */
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+}
+
+@theme inline {
+  --radius-lg: var(--radius);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+
+    /* Glass Design Stuff */
+    --radius: 0.85rem;
+    --background: oklch(0.99 0.01 250);
+    --foreground: oklch(0.15 0 0);
+    --primary: oklch(0.68 0.15 250);
+    --primary-foreground: oklch(0.99 0 0);
+    --border: oklch(0.9 0 0);
+    --ring: oklch(0.7 0 0);
+    --canvas-a: oklch(0.99 0.03 250);
+    --canvas-b: oklch(0.97 0.04 210);
+
+    /* CHART STUFF */
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+  }
+
+  /* Enhanced base colors + dark contrasting gradient canvas */
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(
+      180deg,
+      rgba(115, 127, 145, 1) 0%,
+      rgb(109, 103, 146) 50%,
+      rgb(28, 10, 65) 100%
+    );
+  }
+
+  /* Enhanced text rendering for better legibility */
+  body {
+    -webkit-font-smoothing: antialiased; /* Smooth text rendering on WebKit browsers */
+    -moz-osx-font-smoothing: grayscale; /* Smooth text rendering on Firefox */
+    text-rendering: optimizeLegibility; /* Optimize text rendering for legibility */
+  }
+
+  /* Make default `border` utilities use your border token */
+  *,
+  ::before,
+  ::after {
+    @apply border-border;
+  }
+}
+
+/* Components Style */
+@layer components {
+  .glass {
+    @apply rounded-2xl border border-white/25 dark:border-white/15 
+           bg-white/15 dark:bg-white/8 
+           backdrop-blur-xl backdrop-saturate-150 
+           shadow-2xl ring-1 ring-white/15
+           transition-all duration-300 ease-out;
+  }
+
+  .glass:hover {
+    @apply shadow-2xl ring-white/25
+           bg-white/20 dark:bg-white/12;
+  }
+
+  .glass-button {
+    @apply rounded-lg border border-white/20 dark:border-white/10
+           bg-white/20 dark:bg-white/10
+           backdrop-blur-md backdrop-saturate-150
+           shadow-lg ring-1 ring-white/10
+           text-foreground font-medium
+           transition-all duration-200 ease-out
+           hover:bg-white/30 dark:hover:bg-white/15
+           hover:shadow-xl hover:ring-white/20;
+  }
+
+  /* Flex Box stuff */
+  .parent {
+    @apply flex flex-wrap gap-4 items-stretch; /* wrap rows, keep heights aligned */
+    /* you can tweak the defaults below per project */
+  }
+
+  /* A fluid tile: width expands between 240–420px; height scales with viewport */
+  /* example bounds for a dashboard tile */
+  .child {
+    flex: 1 1 clamp(360px, 32vw, 520px); /* width range */
+    min-height: clamp(220px, 28vh, 320px); /* height range */
+  }
+
+  /* Optional modifiers */
+  .child--wide {
+    flex-basis: clamp(480px, 64vw, 860px);
+  }
+  .child--tall {
+    min-height: clamp(240px, 40vh, 380px);
+  }
+}
