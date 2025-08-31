@@ -122,16 +122,20 @@ body {
 
   /* A fluid tile: width expands between 240–420px; height scales with viewport */
   /* example bounds for a dashboard tile */
-  .child {
-    flex: 1 1 clamp(360px, 32vw, 520px); /* width range */
-    min-height: clamp(220px, 28vh, 320px); /* height range */
-  }
+.child {
+  flex: 1 1 clamp(22.5rem, 32vw, 32.5rem);   
+  min-height: clamp(13.75rem, 28vh, 20rem);  
+}
 
-  /* Optional modifiers */
-  .child--wide {
-    flex-basis: clamp(480px, 64vw, 860px);
-  }
-  .child--tall {
-    min-height: clamp(240px, 40vh, 380px);
-  }
+.child--wide {
+  flex-basis: clamp(30rem, 64vw, 12.5rem);   
+}
+
+.child--small {
+  flex-basis: clamp(10rem, 64vw, 18rem);  
+}
+
+.child--tall {
+  min-height: clamp(15rem, 40vh, 23.75rem);
+}
 }

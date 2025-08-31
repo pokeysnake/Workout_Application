@@ -9,6 +9,7 @@ import {
 import {
   ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent,
 } from "@/components/ui/chart";
+import Link from "next/link";
 
 const chartConfig = {
   Weight: { label: "Body Weight ", color: "#2563eb" },
@@ -48,9 +49,9 @@ export default function Page() {
       <div className="parent">
 
         {/* BODY WEIGHT */}
-        <Card className="glass child flex flex-col min-h-[320px] sm:min-h-[360px] lg:min-h-[420px]">
+        <Card className="child glass flex flex-col min-h-[20rem] sm:min-h-[22rem] lg:min-h-[26rem]">
           <CardHeader className="pt-3 pb-1 shrink-0">
-            <CardTitle className="text-white text-lg font-bold">Body Weight</CardTitle>
+            <CardTitle className="text-white text-2xl font-bold">Body Weight</CardTitle>
             <CardDescription className="text-white/80 text-sm">
               <div className="flex items-center gap-2 text-sm text-white">Trending up by 5.2%</div>
             </CardDescription>
@@ -96,9 +97,9 @@ export default function Page() {
 
 
         {/* STRENGTH OVER TIME */}
-        <Card className="child glass flex flex-col min-h-[320px] sm:min-h-[360px] lg:min-h-[420px]">
+        <Card className="child glass flex flex-col min-h-[20rem] sm:min-h-[22rem] lg:min-h-[26rem]">
           <CardHeader className="pt-3 pb-1 shrink-0">
-            <CardTitle className = "text-lg font-bold text-white">How strong are you?</CardTitle>
+            <CardTitle className = "text-2xl font-bold text-white">How strong are you?</CardTitle>
             <CardDescription className="text-white/80 text-sm">
               <div className = "text-sm text-white">Strength increased substantially!</div>
             </CardDescription>
@@ -161,10 +162,36 @@ export default function Page() {
                 </AreaChart>
               </ChartContainer>
             </div>
-          </CardContent>
-
-          
+          </CardContent> 
         </Card>
+
+        {/* FAVORITE RECIPES CARD */}
+          <Card className = "child--small glass flex flex-col min-h-[8.5rem] sm:min-h-[10rem] lg:min-h-[14rem]">
+              <CardHeader className ="pt-3 shrink-0 pb-1 text-center">
+                <CardTitle className = "text-2xl text-white font-bold text-center">You love to eat ...</CardTitle>
+                <CardDescription className = "text-lg font-bold text-white text-center pt-4">Vienna Sausage !</CardDescription>
+                <CardDescription className = "text-sm text-white text-center pt-1">Protein: 30g | Carbs: 17g | Fats: 45g | Time to Cook: 20min</CardDescription>
+                <CardFooter className = "pt-8 flex justify-center">
+                  <Link href="/calories" className="block text-base text-md text-white hover:opacity-80 transition-opacity duration-200 ">View Recipe Here</Link>
+                </CardFooter>
+              </CardHeader>
+          </Card>
+
+          {/* QUICK ACTION (LINKS) */}
+          <Card className = "child--small glass flex flex-col min-h-[3rem] sm:min-h-[10rem] lg:min-h-[10rem]">
+              <CardHeader className ="pt-3 shrink-0 pb-1 text-center">
+                <CardTitle className = "text-2xl text-white font-bold text-center">Quick Actions</CardTitle>
+                <CardDescription className = "text-3xl font-bold text-white text-center p-4">insert buttosn</CardDescription>
+              </CardHeader>
+          </Card>
+
+          {/* TMRW WORKOUT */}
+          <Card className = "child--small glass flex flex-col min-h-[3rem] sm:max-h-[3rem] lg:min-h-[10rem]">
+              <CardHeader className ="pt-3 shrink-0 pb-1 text-center">
+                <CardTitle className = "text-2xl text-white font-bold text-center">Up Next...</CardTitle>
+                <CardDescription className = "text-3xl font-bold text-white text-center p-4">Back Day!</CardDescription>
+              </CardHeader>
+          </Card>
 
       </div>
     </section>
