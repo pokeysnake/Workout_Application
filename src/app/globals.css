@@ -116,15 +116,15 @@ body {
 
   /* Flex Box stuff */
   .parent {
-    @apply flex flex-wrap gap-4 items-stretch; /* wrap rows, keep heights aligned */
+    @apply flex flex-wrap gap-4 items-start; /* wrap rows, keep heights aligned */
     /* you can tweak the defaults below per project */
   }
 
   /* A fluid tile: width expands between 240–420px; height scales with viewport */
-  /* example bounds for a dashboard tile */
+  /* example bounds for a dashboard tile min-height: clamp(13.75rem, 28vh, 20rem);*/
 .child {
   flex: 1 1 clamp(22.5rem, 32vw, 32.5rem);   
-  min-height: clamp(13.75rem, 28vh, 20rem);  
+    
 }
 
 .child--wide {
